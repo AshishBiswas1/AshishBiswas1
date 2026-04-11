@@ -1,75 +1,63 @@
 name: Metrics
+
 on:
-  schedule: [{cron: "0 0 * * *"}]
+  schedule: [{ cron: "0 0 * * *" }]
   workflow_dispatch:
-  push: {branches: ["master", "main"]}
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: Generate GitHub Metrics
+        uses: lowlighter/metrics@latest
         with:
+          # 🔐 GitHub token
           token: ${{ secrets.METRICS_TOKEN }}
+
+          # 👤 Your username
           user: AshishBiswas1
 
-          # 🔹 Layout & Base
+          # 🎨 Layout settings
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Kolkata
           config_display: large
           config_padding: 12%
 
-          # 🔹 Contribution Calendar (Top section)
+          # 📅 Contribution calendar
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-          # 🔹 Languages
+          # 💻 Languages
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 6
           plugin_languages_sections: most-used
 
-          # 🔹 Tech Stack Icons
+          # 🧠 Topics (Tech stack icons)
           plugin_topics: yes
           plugin_topics_mode: icons
           plugin_topics_limit: 24
           plugin_topics_sort: stars
 
-          # 🔹 Coding Habits (FIXED)
-          plugin_habits: yes
-          plugin_habits_from: 100
-          plugin_habits_days: 7
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
+          # ⭐ Starred repositories
+          plugin_stars: yes
+          plugin_stars_limit: 4
 
-          # 🔹 PageSpeed (FIXED with API key)
+          # ⚡ PageSpeed Insights (WORKING)
           plugin_pagespeed: yes
           plugin_pagespeed_url: https://abprotfolio.netlify.app/
           plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
           plugin_pagespeed_detailed: yes
 
-          # 🔹 Achievements
-          plugin_achievements: yes
-          plugin_achievements_threshold: B
-          plugin_achievements_display: detailed
-
-          # 🔹 Recent Activity
-          plugin_activity: yes
-          plugin_activity_limit: 5
-          plugin_activity_days: 14
-
-          # 🔹 3D Contribution Graph
-          plugin_skyline: yes
-          plugin_skyline_year: current-year
-
-          # 🔹 Stars
-          plugin_stars: yes
-          plugin_stars_limit: 4
-
-          # 🔹 Metadata
+          # 🧾 Metadata
           commits_authoring: Ashish Biswas
