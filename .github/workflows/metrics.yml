@@ -17,19 +17,26 @@ jobs:
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Kolkata
           
-          # Most used languages (The colorful bar)
+          # 1. Most used languages (Already working for you)
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_details: bytes-size, percentage
           
-          # Mastered technologies (The tech icons)
+          # 2. Mastered technologies (The icons from the bottom of your reference image)
           plugin_topics: yes
           plugin_topics_mode: icons
           plugin_topics_limit: 20
+          plugin_topics_sort: stars
+
+          # 3. PageSpeed Insights (The 100/100 scores in the top right of your reference image)
+          # Note: Replace with your live portfolio link if you have one!
+          plugin_pagespeed: yes
+          plugin_pagespeed_url: https://github.com/AshishBiswas1
+          plugin_pagespeed_detailed: yes
           
-          # Recent activity habits (Disabled temporarily to fix your TypeError)
-          plugin_habits: no
-          
-          # Optional: PageSpeed (If you have a live portfolio URL, add it here)
-          # plugin_pagespeed: yes
-          # plugin_pagespeed_url: https://your-portfolio.com
+          # 4. Coding habits (The "Commit activity per time of day" chart)
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
