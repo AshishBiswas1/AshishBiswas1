@@ -19,13 +19,10 @@ jobs:
       - name: Generate GitHub Metrics
         uses: lowlighter/metrics@latest
         with:
-          # 🔐 GitHub token
           token: ${{ secrets.METRICS_TOKEN }}
-
-          # 👤 Your username
           user: AshishBiswas1
 
-          # 🎨 Layout settings
+          # 🎨 Layout
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Kolkata
@@ -43,21 +40,23 @@ jobs:
           plugin_languages_limit: 6
           plugin_languages_sections: most-used
 
-          # 🧠 Topics (Tech stack icons)
+          # 🧠 Tech stack icons
           plugin_topics: yes
           plugin_topics_mode: icons
           plugin_topics_limit: 24
           plugin_topics_sort: stars
 
-          # ⭐ Starred repositories
+          # ⭐ Stars
           plugin_stars: yes
           plugin_stars_limit: 4
 
-          # ⚡ PageSpeed Insights (WORKING)
+          # ⚡ PageSpeed
           plugin_pagespeed: yes
           plugin_pagespeed_url: https://abprotfolio.netlify.app/
           plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
           plugin_pagespeed_detailed: yes
+
+          plugin_habits: no
 
           # 🧾 Metadata
           commits_authoring: Ashish Biswas
