@@ -56,7 +56,10 @@ jobs:
           plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
           plugin_pagespeed_detailed: yes
 
+          # ❌ FORCE DISABLE (IMPORTANT)
           plugin_habits: no
+          plugin_activity: no
+          plugin_achievements: no
 
           # 🧾 Metadata
           commits_authoring: Ashish Biswas
